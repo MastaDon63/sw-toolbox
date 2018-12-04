@@ -1,3 +1,5 @@
+import {Handler} from "sw-toolbox";
+
 declare module 'sw-toolbox' {
   type URLPattern = string | RegExp
   type PrecacheURL = Request | string
@@ -29,6 +31,7 @@ declare module 'sw-toolbox' {
   }
 
   export const cacheFirst: Handler
+  export const cacheFirstWithTiming: Handler
   export const cacheOnly: Handler
   export const fastest: Handler
   export const networkFirst: Handler
