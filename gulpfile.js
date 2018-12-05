@@ -27,6 +27,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var temp = require('temp').track();
 var testServer = require('./test/server/index.js');
 var uglify = require('gulp-uglify');
+var gutil = require('gulp-util');
+
 
 var buildSources = ['lib/**/*.js'];
 var lintSources = buildSources.concat([
@@ -55,6 +57,9 @@ gulp.task('build', function() {
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(uglify())
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red('[Error]'), err.toString());
+    })
     .pipe(header(license))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./'));
