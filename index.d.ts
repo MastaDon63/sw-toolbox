@@ -1,4 +1,3 @@
-import {Handler} from "sw-toolbox";
 
 declare module 'sw-toolbox' {
   type URLPattern = string | RegExp
